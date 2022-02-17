@@ -6,18 +6,19 @@ let imgPixels;
 
 
 inp.oninput = () => {
-    inp.value
     if (inp.value) {
+        banner.style.display = "block   ";
         [ctx.textBaseline, ctx.textAlign, ctx.font, ctx.fillStyle] = ['bottom', 'center', '45px Georgia', "#000000"];
         ctx.fillText(inp.value, (canvas.width / 2) - 20, (canvas.height / 2) + 5);
         canvasToImage();
         imgPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const imgMatrix = printImg().map((el) => el.join('')).join('\n'); 
-        banner.innerHTML = imgMatrix
+        banner.innerHTML = imgMatrix;
         
 
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        banner.style.display = "none";
     }
 
 }
